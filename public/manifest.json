@@ -1,7 +1,7 @@
 {
-	"short_name": "Expense.fyi",
-	"name": "Expense.fyi",
-	"description": "Effortlessly Track and Manage your Expenses.",
+	"short_name": "Expense-Tracker",
+	"name": "Expense-Tracker",
+	"description": "Expense Tracker with Typescript.",
 	"display": "standalone",
 	"orientation": "portrait",
 	"icons": [
