@@ -202,7 +202,16 @@ export default function Home() {
                             </a>
                         </div>
                     </div>
-
+                            <div className='bg-pro-plan mt-8  min-w-[330px] divide-y divide-gray-600 rounded-lg bg-zinc-900 text-left shadow-sm sm:mt-0'>
+                                <div className='p-5 py-6'>
+                                    <h2 className='text-3xl font-extrabold leading-6 text-white'>Premium</h2>
+                                    <p className='mb-2 mt-2 text-gray-300'>Access to all premium features</p>
+                                    <p className='mt-4'>
+                                        <span className='inline-flex text-3xl font-extrabold text-white'>$ 20</span>
+                                        <span className='text-base text-gray-100'>/ year</span>
+                                    </p>
+                                </div>
+                            </div>
                 </div>
             </main>
         </div>
