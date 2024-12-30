@@ -68,7 +68,92 @@ export default function Home() {
                             </Link>
                         </div>
                 </div>
-                
+                <div className='mx-auto mb-16 mt-16 max-w-md px-3 text-center sm:max-w-lg sm:px-0'>
+                    <h2 className='mt-4 text-3xl font-extrabold tracking-[-0.03em] text-black sm:text-4xl'>
+                        <span className='bg-gradient-to-r from-amber-400 to-orange-600 bg-clip-text text-transparent'> Why should you use</span>{' '}Expense Tracker?
+                    </h2>
+                    <ul className='mt-6 list-decimal px-4 text-left leading-6 [counter-reset:section] sm:px-2'>
+                        <li className='before::h-2 mt-4 text-base tracking-tight sm:text-lg'>
+                            <b className='font-sans font-bold text-black'>Easy to use</b>
+                            Track expenses on the go with categorization and logging.
+                        </li>
+                        <li className='before::h-2 mt-4 text-base tracking-tight sm:text-lg'>
+                            <b className='font-sans font-bold text-black'>Data driven insights:</b>Expense Tracker 
+                            can provide valuable insights into your spending habits, allowing you to make more informed decisions.
+                            
+                        </li>
+                        <li className='before::h-2 mt-4 text-base tracking-tight sm:text-lg'>
+                            <b className='font-sans font-bold text-black'>Indentify Overspending</b> Take control
+                            of your finances by indentifying and reducing overspending with an expense tracker.
+                        </li>
+                        <li className='before::h-2 mt-4 text-base tracking-tight sm:text-lg'>
+                            <b className='font-sans font-bold text-black'>Real-time visibility</b> Monitor yor expenses 
+                            in real-time, whether you are at home or on-the-go, with a user friendly interface.
+                        </li>
+                    </ul>
+                </div>
+                <div className='mx-auto mb-16 mt-16 max-w-2xl'>
+                    <h2 className='mb-12 mt-8 text-center text-3xl font-extrabold tracking-[-0.03em] text-black sm:text-4xl'>
+                        Simple yet,{' '}
+                        <span className='bg-gradient-to-r from-amber-400 to-orange-600 bg-clip-text text-transparent'>Powerful</span>
+                        {' '}Features.</h2>
+                        <div className='mt-10 grid grid-cols-1 justify-center gap-10 p-5 lg:grid-cols-2 lg:gap-20'>
+                            <Features />
+                        </div>
+                </div>
+                <div className='mx-auto mb-16 mt-16 grid max-w-md justify-center px-3 text-center sm:px-0 md:max-w-[600px]'>
+                    <h2 className='mt-0 text-3xl font-extrabold tracking-[-0.03em] text-black sm:text-4xl'>
+                        Our{' '}
+                        <span className='bg-gradient-to-r from-amber-400 to-orange-600 bg-clip-text text-transparent'>Pricing Plans</span>
+                    </h2>
+                    <p className='mt-3 text-base leading-7 tracking-tight sm:text-lg'>
+                        Start for free, no credit card is required
+                    </p>
+                    <div className='mt-8 flex w-full flex-col sm:flex-row'>
+                        <div className='min-w-[330px] divide-y divide-gray-600 rounded-lg bg-zinc-900 text-left shadow-sm sm:mr-8'>
+                            <div className='p-5 py-6'>
+                                <h2 className='text-3xl font-extrabold leading-6 text-white'>Basic</h2>
+                                    <p className='mb-2 mt-2 text-gray-300'>Free forever with limits</p>
+                                    <p className='mt-4'>
+                                        <span className='text-3xl font-extrabold text-white'>$ 0</span>
+                                        <span className='text-base text-gray-100'>/ month</span>
+                                        </p> 
+                                        <div className='mb-0 ml-1 mt-4 flex flex-col justify-center text-left text-white'>
+                                            <span className='m-1 ml-0 flex items-center  text-[15px]'>
+                                                <svg
+                                                xmlns='http://www.w3.org/2000/svg'
+                                                viewBox='0 0 24 24'
+                                                fill='currentColor'
+                                                aria-hidden='true'
+                                                className='mr-1 h-5 w-5 text-green-600'>
+
+                                                <path
+                                                fillRule='evenodd'
+                                                d='M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z'
+                                                clipRule='evenodd'></path>
+                                                </svg>
+                                                Trend visualization with charts.
+                                            </span>
+                                            <span className='m-1 ml-0 flex items-center text-[15px]'>
+                                                <svg 
+                                                xmlns='http://www.w3.org/2000/svg'
+                                                viewBox='0 0 24 24'
+                                                fill='currentColor'
+                                                aria-hidden='true'
+                                                className='mr-1 h-5 w-5 text-green-600'>
+
+                                            <path
+                                            fillRule='evenodd'
+                                            d='M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z'
+                                            clipRule='evenodd'></path>
+                                                </svg>
+                                            </span>
+                                            <span>Add up to 100 entries per account</span>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     
