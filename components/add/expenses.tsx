@@ -175,12 +175,24 @@ return(
                             </option>
                         </select>
                     </div>
-
-                    
-                </div>
+                    </div>
+                   <div>
+                    <Label className="block">
+                        Notes <span className="">(optional)</span>
+                        </Label>
+                        <Textarea 
+                        className="" 
+                        onChange={(event) => setState({ ...state, notes: event.target.value})}
+                        value={state.notes}
+                        maxLength={60} />
+                        </div> 
+        
+                <Button  disabled={loading} className="mt-1.5" type="submit"
+                    {loading ? <CircleLoader /> : `${selected?.id ? 'Update' : 'Submit'}`}>
+                        </Button>
             </form>
         </div>
     </Modal>
-)
+);
 }
 
