@@ -178,10 +178,10 @@ return(
                     </div>
                    <div>
                     <Label className="block">
-                        Notes <span className="">(optional)</span>
+                        Notes <span className="text-center text-sm text-muted-foreground">(optional)</span>
                         </Label>
                         <Textarea 
-                        className="" 
+                        className="mt-2 h-20" 
                         onChange={(event) => setState({ ...state, notes: event.target.value})}
                         value={state.notes}
                         maxLength={60} />

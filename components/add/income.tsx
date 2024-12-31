@@ -115,14 +115,36 @@ return(
                     }}
                     data={state.autocomplete}
                     searchTerm={state.name.length > 2 ? state.name.toLowerCase() : ''}
-                    onClick={({ name, category, paid_via}) => {
-                        setState({ ...state, name, category, paid_via, autocomplete: [] });
+                    onClick={({ name, category}) => {
+                        setState({ ...state, name, category, autocomplete: [] });
                     }}
                     show={Boolean(state.autocomplete?.length)}/>
                 </div>
                 <div className="grid grid-cols-[50%,50%] gap-3">
                     <div className="mr-3">
-                        <Label htmlFor="price">Price
+                        <Label htmlFor="amount">Amount
+                           <span className="ml-2 font-mono text-xs text-muted-foreground">
+                            ({getCurrencySymbol(user.currency, user.locale)})
+                            </span> 
+                        </Label>
+                        <Input
+                        className="mt-1.5 appearance-none"
+                        id="amount"
+                        type="number"
+                        inputMode="decimal"
+                        placeholder="10000"
+                        required
+                        min="0"
+                        step="any"
+                        onChange={(event) => {
+                            setState({ ...state, date: event.target.value});
+                        }}
+                        value={state.price} />
+                    </div>
+                </div>
+                <div className="grid grid-cols-[50%,50%] gap-3">
+                    <div className="mr-3">
+                        <Label htmlFor="date">Recieved Date
                            <span className="ml-2 font-mono text-xs text-muted-foreground">
                             ({getCurrencySymbol(user.currency, user.locale)})
                             </span> 
@@ -152,31 +174,22 @@ return(
                         }}
                         value={state.category}
                         required>
-                            {Object.keys(groupedExpenses).map((key) => {
-                                return (
-                                    <optgroup label={groupedExpenses[key].name} key={groupedExpenses[key].name}>
-                                        {Object.keys(groupedExpenses[key].list).map((listKey) => {
+                                        {Object.keys(incomeCategory).map((categoryKey) => {
                                             return (
-                                                <option key={listKey} value={listKey}>
-                                                    {groupedExpenses[key].list[listKey].name}
+                                                <option key={categoryKey} value={categoryKey}>
+                                                    {incomeCategory[categoryKey]}
                                                 </option>
                                             );
                                         })}
-                                    </optgroup>
-                                );
-                            })}
-                            <option key={'other'} value={'other'}>
-                                {expensesCategory.other.name}
-                            </option>
                         </select>
                     </div>
                     </div>
                    <div>
                     <Label className="block">
-                        Notes <span className="">(optional)</span>
+                        Notes <span className="text-center text-sm text-muted-foreground">(optional)</span>
                         </Label>
                         <Textarea 
-                        className="" 
+                        className="mt-2 h-20" 
                         onChange={(event) => setState({ ...state, notes: event.target.value})}
                         value={state.notes}
                         maxLength={60} />
@@ -185,9 +198,9 @@ return(
                 <Button  disabled={loading} className="mt-1.5" type="submit"
                     {loading ? <CircleLoader /> : `${selected?.id ? 'Update' : 'Submit'}`}>
                         </Button>
-            </form>
-        </div>
-    </Modal>
-);
+                </form>
+            </div>
+        </Modal>
+    );
 }
 
