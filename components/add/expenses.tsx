@@ -146,7 +146,38 @@ return(
                     </div>
                 </div>
 
-                
+                <div className="">
+                    <div className="">
+                        <Label htmlFor="category">Category</Label>
+                        <select 
+                        id="category" 
+                        className="mt-1.5 flex h-9 max-sm:h-10 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                        onChange={(event) => {
+                            setState({ ...state, category: event.target.value});
+                        }}
+                        value={state.category}
+                        required>
+                            {Object.keys(groupedExpenses).map((key) => {
+                                return (
+                                    <optgroup label={groupedExpenses[key].name} key={groupedExpenses[key].name}>
+                                        {Object.keys(groupedExpenses[key].list).map((listKey) => {
+                                            return (
+                                                <option key={listKey} value={listKey}>
+                                                    {groupedExpenses[key].list[listKey].name}
+                                                </option>
+                                            );
+                                        })}
+                                    </optgroup>
+                                );
+                            })}
+                            <option key={'other'} value={'other'}>
+                                {expensesCategory.other.name}
+                            </option>
+                        </select>
+                    </div>
+
+                    
+                </div>
             </form>
         </div>
     </Modal>
