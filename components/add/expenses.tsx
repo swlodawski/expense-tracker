@@ -125,6 +125,28 @@ return(
                     }}
                     show={Boolean(state.autocomplete?.length)}/>
                 </div>
+                <div className="grid grid-cols-[50%,50%] gap-3">
+                    <div className="mr-3">
+                        <Label htmlFor="price">Price
+                           <span className="ml-2 font-mono text-xs text-muted-foreground">
+                            ({getCurrencySymbol(user.currency, user.locale)})
+                            </span> 
+                        </Label>
+                        <Input
+                        className="mt-1.5 appearance-none"
+                        id="date"
+                        type="date"
+                        required
+                        max={todayDate}
+                        pattern={datePattern}
+                        onChange={(event) => {
+                            setState({ ...state, date: event.target.value});
+                        }}
+                        value={state.date} />
+                    </div>
+                </div>
+
+                
             </form>
         </div>
     </Modal>
