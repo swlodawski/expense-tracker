@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "node_modules/@types/react";
 
 import { incrementUsage } from 'app/dashboard/apis';
-import { addIncome, editIncome } from 'app/dashboard/expenses/apis';
+import { addIncome, editIncome } from 'app/dashboard/income/apis';
 import { format } from "date-fns";
 import debounce from 'debounce';
 import { toast } from 'sonner';
