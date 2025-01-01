@@ -93,7 +93,7 @@ const onSubmit = async () => {
 };
 
 return(
-    <Modal someRef={inputRef} show={show} title={`${selected.id ? 'Edit' : 'Add'} Investment`} onHide={onHide}>
+    <Modal someRef={inputRef} show={show} title={`${selected.id ? 'Edit' : 'Add'} Subscriptions`} onHide={onHide}>
         <div className="sm:flex sm:items-start max-sm:pb-6">
             <form 
             className="md:[420px] grid w-full grid-cols-1 items-center gap-3"
@@ -107,7 +107,7 @@ return(
                     <Input
                     className="mt-1.5"
                     id="name"
-                    placeholder="Name or $TSLA"
+                    placeholder="Netflix or Amazon Prime"
                     maxLength={30}
                     required
                     ref={inputRef}
@@ -116,10 +116,10 @@ return(
                     onChange={({ target }) => {
                         const { value } = target;
                         if(value.length) {
-                            setState({ ...setState, name: value, autoComplete: [] });
+                            setState({ ...setState, name: value });
                             if ( value.length > 2) onLookup(value);
                         } else {
-                            setState({ ...state, name: '', category: '', autoComplete: [] });
+                            setState({ ...state, name: '', paid: 'monthly' });
                         }
                     }} 
                     value={state.name}/>
@@ -129,47 +129,53 @@ return(
                     }}
                     data={state.autocomplete}
                     searchTerm={state.name.length > 2 ? state.name.toLowerCase() : ''}
-                    onClick={({ name, category }) => {
-                        setState({ ...state, name, category, autocomplete: [] });
+                    onClick={({ name, paid, url }) => {
+                        setState({ ...state, name, paid, url, autocomplete: [] });
                     }}
                     show={Boolean(state.autocomplete?.length)}/>
                 </div>
-                <div className="grid grid-cols-[50%,50%] gap-1">
-                    <div className="mr-3">
-                        <Label htmlFor="price">Single Stock Price
-                           <span className="ml-2 font-mono text-xs text-muted-foreground">
-                            ({getCurrencySymbol(user.currency, user.locale)})
-                            </span> 
+                <div className="grid grid-cols-[100%] gap-1">
+                        <Label className="flex grow-0 items-center" htmlFor="website">Website
+                            {hasValidUrl && state.url ? (
+                                <Image 
+                                src={`http://www.google.com/s2/favicons?domain=${state.url}&sz=125`}
+                                width={15}
+                                height={15}
+                                alt={state?.name}
+                                className="ml-2"/>
+                            ) : null}
                         </Label>
+                        <Input
+                        className="mt-1.5"
+                        id="website"
+                        type="url"
+                        inputMode="url"
+                        pattern="https://.*|http://.*"
+                        maxLength={30}
+                        placeholder="https://netflix.com"
+                        required
+                        onChange={(event) => setState({ ...state, url: event.target.value})}
+                        value={state.url} />
+                </div>
+                <div className="grid grid-cols-[34%,36%,30%] gap-1">
+                    <div className="mr-3">
+                        <span className="">
+                            ({getCurrencySymbol(user.currency, user.locale)})
+                        </span>
+                        <Label htmlFor="price">Price</Label>
                         <Input
                         className="mt-1.5"
                         id="price"
                         type="number"
                         inputMode="decimal"
-                        placeholder="1000"
+                        placeholder="699"
                         required
                         min="0"
                         step="any"
-                        onChange={(event) => setState({ ...state, price: event.target.value})}
-                        value={state.price} />
-                </div>
-                    <div className="mr-3">
-                        <Label htmlFor="units">Units</Label>
-                        <Input
-                        className="mt-1.5 appearance-none"
-                        id="units"
-                        type="number"
-                        inputMode="decimal"
-                        placeholder="10"
-                        required
-                        min="0"
-                        step="any"
-                        onChange={(event) => {setState({ ...state, units: event.target.value})}}
-                        value={state.units}
+                        onChange={(event) => {setState({ ...state, price: event.target.value})}}
+                        value={state.price}
                          />
                     </div>
-                </div>
-                <div className="grid grid-cols-[50%,50%] gap-1">
                     <div className="mr-3">
                         <Label htmlFor="date">Bought Date</Label>
                         <Input
@@ -184,22 +190,20 @@ return(
                         }}
                         value={state.date} />
                     </div>
-                        </div>
-                <div className="">
-                    <div className="">
-                        <Label htmlFor="category">Category</Label>
+                    <div className="mr-3">
+                        <Label htmlFor="paying">Paying</Label>
                         <select 
-                        id="category" 
+                        id="paying" 
                         className="mt-1.5 flex h-9 max-sm:h-10 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                         onChange={(event) => {
-                            setState({ ...state, category: event.target.value});
+                            setState({ ...state, paid: event.target.value});
                         }}
-                        value={state.category}
+                        value={state.paid}
                         required>
-                                        {Object.keys(investmentCategory).map((categoryKey) => {
+                                        {Object.keys(subscriptionCategory).map((key) => {
                                             return (
-                                                <option key={categoryKey} value={categoryKey}>
-                                                    {investmentCategory[categoryKey]}
+                                                <option key={key} value={key}>
+                                                    {subscriptionCategory[key].name}
                                                 </option>
                                             );
                                         })}
