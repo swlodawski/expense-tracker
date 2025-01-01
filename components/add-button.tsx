@@ -9,10 +9,10 @@ import { Tooltip, ToolTipContent, ToolTipTrigger } from 'components/ui/tooltip';
 
 import shortcuts from "constants/shortcuts";
 
-import addExpense from "./add/expenses";
+import AddExpense from "./add/expenses";
 import AddIncome from "./add/income";
 import AddInvestment from "./add/investments";
-import addSubscriptions from "./add/subscriptions";
+import AddSubscriptions from "./add/subscriptions";
 
 const openShortcutKey = Object.values(shortcuts.modal.open.shortcut);
 
@@ -86,6 +86,32 @@ return (
             setShow(false);
         }} />
     ): null}
+    {type === 'investments' ? (
+        <AddInvestment
+            lookup={(value: string) => {
+                if(onLookup) return onLookup(value);
+            }}
+            show={show}
+            selected={selected}
+            mutate={mutate}
+            onHide={() => {
+                if(onHide) onHide();
+                setShow(false);
+            }} />
+    ) : null}
+    {type === 'subscriptions' ? (
+        <AddSubscriptions
+        lookup={(value: string) => {
+            if(onLookup) return onLookup(value);
+        }}
+        show={show}
+        selected={selected}
+        mutate={mutate}
+        onHide={() => {
+            if(onHide) onHide();
+            setShow(false);
+        }} />
+    ) : null}
     </>
-)
+    );
 }
